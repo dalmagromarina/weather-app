@@ -48,7 +48,7 @@ Primeiro, clone este repositório para sua máquina local:
 ```bash
 git clone [URL_DO_SEU_REPOSITORIO_GITHUB]
 cd nome-do-seu-repositorio
-
+```
 ### 2. Configurar o Banco de Dados (MSSQL)
 Crie um Banco de Dados:
 Abra o SSMS ou Azure Data Studio, conecte-se ao seu SQL Server e crie um novo banco de dados. Sugerimos o nome db_previsao_clima.
@@ -56,6 +56,17 @@ Abra o SSMS ou Azure Data Studio, conecte-se ao seu SQL Server e crie um novo ba
 Crie as Tabelas:
 Execute os seguintes scripts SQL no seu banco de dados db_previsao_clima.
 
-### 3. Configurar Login no SQL Server:
+Configurar Login no SQL Server:
 
 Autenticação SQL Server (Usuário e Senha): Se você pretende usar um login SQL Server (como sa), defina uma senha forte para ele e certifique-se de que o SQL Server está configurado para "Mixed Mode Authentication" (Modo de Autenticação SQL Server e Windows).
+
+Autenticação Windows: Se preferir, você pode usar seu usuário Windows que está executando a aplicação. Nesse caso, certifique-se de que seu usuário Windows tenha permissões de db_owner (ou similar) no banco de dados db_previsao_clima.
+
+### 3. Configurar Variáveis de Ambiente
+Na pasta backend, crie um arquivo chamado .env (se já não existir) e preencha-o com suas credenciais de banco de dados e sua chave de API da Meteoblue.
+
+Substitua SuaSenhaSeguraAqui e SuaChaveDaAPIMeteoblueAqui pelos seus valores reais.
+Ajuste DB_SERVER se sua instância do SQL Server não for localhost (ex: localhost\SQLEXPRESS).
+
+### 4. Instalar Dependências
+No terminal, navegue para as pastas backend e frontend separadamente e instale as dependências:
