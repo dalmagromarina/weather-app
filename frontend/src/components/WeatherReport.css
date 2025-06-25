@@ -1,0 +1,55 @@
+/* frontend/src/components/WeatherReport.css */
+
+.weather-report-container {
+  margin-top: 30px;
+  background-color: var(--torfresma-light);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.report-title {
+  color: var(--torfresma-dark);
+  font-family: 'Merriweather', serif;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.no-data-message {
+  color: var(--torfresma-dark);
+  font-style: italic;
+  font-size: 1.2em;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.weather-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 0.95em;
+}
+
+.weather-table th,
+.weather-table td {
+  border: 1px solid #ddd;
+  padding: 12px 10px;
+  text-align: left;
+}
+
+.weather-table th {
+  background-color: var(--torfresma-primary); /* Cabeçalho da tabela agora é verde */
+  color: var(--torfresma-text-dark); /* Texto mais escuro no cabeçalho verde */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.weather-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.weather-table tbody tr:hover {
+  background-color: #e0e0e0;
+}

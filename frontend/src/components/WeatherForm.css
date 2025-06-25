@@ -1,0 +1,60 @@
+/* frontend/src/components/WeatherForm.css */
+
+.weather-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 25px;
+  background-color: var(--torfresma-dark);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+}
+
+.form-input {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  flex-grow: 1;
+  min-width: 150px;
+}
+
+.form-input.small-input {
+  min-width: 100px;
+}
+
+.form-separator {
+  color: var(--torfresma-text-light);
+  font-weight: bold;
+}
+
+.form-button {
+  background-color: var(--torfresma-primary); /* Botão agora é verde */
+  color: var(--torfresma-text-dark); /* Texto mais escuro no botão verde */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.form-button:hover {
+  background-color: #a0dd00; /* Um verde um pouco mais escuro ao passar o mouse */
+}
+
+@media (max-width: 600px) {
+  .weather-form {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .form-input {
+    width: 100%;
+    min-width: unset;
+  }
+}
