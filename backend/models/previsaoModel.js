@@ -1,4 +1,3 @@
-// backend/models/previsaoModel.js
 const { sql } = require('../config/db');
 
 class PrevisaoClima {
@@ -102,8 +101,8 @@ class PrevisaoClima {
     }
   }
 
-  // NOVO MÉTODO: findCachedData para a lógica de cache
-  static async findCachedData(cidade, startDate, endDate) {
+
+static async findCachedData(cidade, startDate, endDate) {
     try {
       const request = new sql.Request();
       

@@ -1,5 +1,3 @@
-/* frontend/src/App.css */
-
 /* Definição das variáveis de cores da Torfresma */
 :root {
   --torfresma-primary: #c0ff00; /* Novo tom de verde vibrante */
@@ -9,9 +7,7 @@
   --torfresma-text-dark: #333333;  /* Cinza escuro para texto sobre fundo claro */
 }
 
-/* Importar uma fonte serifada que se aproxime do logo (opcional, mas adiciona estilo) */
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
-/* Importar uma fonte sans-serif para o corpo do texto, mais legível */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
 
@@ -29,9 +25,9 @@ body {
 }
 
 .App-header {
-  background-color: var(--torfresma-primary); /* Cabeçalho agora é verde */
+  background-color: var(--torfresma-dark); 
   padding: 20px;
-  color: var(--torfresma-text-dark); /* Texto mais escuro no cabeçalho verde */
+  color: var(--torfresma-text-light); 
   margin-bottom: 20px;
 }
 
@@ -47,32 +43,47 @@ main {
   padding: 20px;
 }
 
-/* Estilos para mensagens de loading e erro */
 p {
   font-size: 1.1em;
 }
 
-p[style*="color: red"] { /* Estilo para a mensagem de erro (ainda em vermelho, pois é um erro) */
-  color: #E00000 !important; /* Mantendo o vermelho para erros para clareza visual */
+p[style*="color: red"] { 
+  color: #E00000 !important; 
   font-weight: bold;
 }
 
 .App-logo {
-  height: 20px; /* Ajuste a altura conforme necessário */
-  /* Para logos mais largas, pode ser interessante usar width: auto; e max-width: Xpx; */
-  /* ou usar uma largura fixa e height: auto; para manter a proporção */
-  pointer-events: none; /* Impede que a imagem seja "arrastável" */
-  margin-bottom: 10px; /* Espaço abaixo da logo */
+  height: 20px; 
+  pointer-events: none; 
+  margin-bottom: 10px; 
+}
+.App-header {
+  background-color: var(--torfresma-dark);
+  padding: 20px;
+  color: var(--torfresma-primary);
+  margin-bottom: 20px;  
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  position: relative; 
 }
 
-.App-header {
-  background-color: var(--torfresma-primary);
-  padding: 20px;
-  color: var(--torfresma-text-dark);
-  margin-bottom: 20px;
-  display: flex; /* Para alinhar a logo e o texto */
-  flex-direction: column; /* Coloca logo e texto em coluna */
-  align-items: center; /* Centraliza horizontalmente */
-  justify-content: center; /* Centraliza verticalmente (se houver espaço) */
+.App-header h1 {
+  font-family: 'Merriweather', serif;
+  font-size: 2.5em;
+  margin: 0;   
+  position: absolute;
+  left: 50%; 
+  transform: translateX(-50%); 
+  white-space: nowrap; 
+  z-index: 1; 
 }
+
+.App-logo {
+  height: 20px; 
+  pointer-events: none;
+  position: relative; 
+  z-index: 2; 
+}
+
 

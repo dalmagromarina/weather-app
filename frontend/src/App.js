@@ -1,4 +1,3 @@
-// frontend/src/App.js
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import WeatherForm from './components/WeatherForm';
@@ -77,11 +76,10 @@ function App() {
           cityToFilter = 'Coordenadas Fornecidas'; // O nome que será salvo no DB e usado para filtrar
       }
       
-      // Agora, chama fetchWeatherData com os parâmetros de filtro corretos
       await fetchWeatherData({ 
           cidade: cityToFilter, 
-          latitude: searchParams.latitude, // Passa lat/lon para o filtro de relatório
-          longitude: searchParams.longitude, // Passa lat/lon para o filtro de relatório
+          latitude: searchParams.latitude, 
+          longitude: searchParams.longitude, 
           startDate: searchParams.startDate, 
           endDate: searchParams.endDate 
       });
@@ -95,7 +93,7 @@ function App() {
   };
 
   useEffect(() => {
-    // fetchWeatherData();
+     //fetchWeatherData();
   }, []);
 
   return (

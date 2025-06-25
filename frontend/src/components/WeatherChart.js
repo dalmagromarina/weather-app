@@ -1,20 +1,17 @@
-// frontend/src/components/WeatherChart.js
 import React from 'react';
-import Chart from 'react-apexcharts'; // Importa o componente Chart do react-apexcharts
+import Chart from 'react-apexcharts'; 
 
 function WeatherChart({ data }) {
   if (!data || data.length === 0) {
     return <p>Sem dados para exibir gráficos.</p>;
   }
 
-  // Preparar os dados para os gráficos
-  // MUDANÇA CRUCIAL AQUI: Formatar a data como UTC para evitar deslocamento de fuso horário
+  
   const dates = data.map(item => new Date(item.DataPrevisao).toLocaleDateString('pt-BR', {timeZone: 'UTC'}));
   const tempMin = data.map(item => item.TemperaturaMin);
   const tempMax = data.map(item => item.TemperaturaMax);
   const precipProbability = data.map(item => item.ProbabilidadePrecipitacao);
 
-  // --- Opções e Séries para o Gráfico de Temperatura ---
   const temperatureChartOptions = {
     chart: {
       id: 'temperature-chart',
@@ -42,9 +39,9 @@ function WeatherChart({ data }) {
     },
     tooltip: {
       x: {
-        format: 'dd/MM/yyyy' // Formato do tooltip
+        format: 'dd/MM/yyyy' 
       },
-      y: { // Adicionado formatador para o tooltip de temperatura
+      y: { 
         formatter: function (val) {
           return val.toFixed(2) + " °C";
         }
@@ -70,7 +67,6 @@ function WeatherChart({ data }) {
     }
   ];
 
-  // --- Opções e Séries para o Gráfico de Probabilidade de Precipitação ---
   const precipitationChartOptions = {
     chart: {
       id: 'precipitation-chart',
@@ -109,7 +105,7 @@ function WeatherChart({ data }) {
         }
       },
       x: {
-        format: 'dd/MM/yyyy' // Formato do tooltip
+        format: 'dd/MM/yyyy' 
       }
     },
     title: {

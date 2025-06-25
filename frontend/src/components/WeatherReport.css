@@ -1,5 +1,3 @@
-/* frontend/src/components/WeatherReport.css */
-
 .weather-report-container {
   margin-top: 30px;
   background-color: var(--torfresma-light);
@@ -40,8 +38,8 @@
 }
 
 .weather-table th {
-  background-color: var(--torfresma-primary); /* Cabeçalho da tabela agora é verde */
-  color: var(--torfresma-text-dark); /* Texto mais escuro no cabeçalho verde */
+  background-color: var(--torfresma-primary); 
+  color: var(--torfresma-text-dark); 
   font-weight: bold;
   text-transform: uppercase;
 }

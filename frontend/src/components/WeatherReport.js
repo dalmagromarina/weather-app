@@ -1,20 +1,18 @@
-// frontend/src/components/WeatherReport.js
 import React from 'react';
-import './WeatherReport.css'; // Importa o CSS específico para o relatório
+import './WeatherReport.css'; 
 
-function WeatherReport({ data, currentCity }) { // Adicionado currentCity como prop
+function WeatherReport({ data, currentCity }) { 
   if (!data || data.length === 0) {
     return <p className="no-data-message">Nenhum dado de previsão disponível. Por favor, faça uma busca.</p>;
   }
 
   return (
-    <div className="weather-report-container">
-      {/* Título do relatório ajustado para mostrar a cidade atual ou o período */}
+    <div className="weather-report-container">    
       <h2 className="report-title">
         Relatório de Previsão
-        {currentCity && ` para ${currentCity}`} {/* Exibe a cidade ou período se estiver definido */}
+        {currentCity && ` para ${currentCity}`} 
       </h2>
-      <div className="table-responsive"> {/* Adiciona um wrapper para rolagem horizontal em telas pequenas */}
+      <div className="table-responsive">
         <table className="weather-table">
           <thead>
             <tr>
@@ -30,7 +28,6 @@ function WeatherReport({ data, currentCity }) { // Adicionado currentCity como p
           <tbody>
             {data.map((item) => (
               <tr key={item.Id} style={{ borderBottom: '1px solid #ddd' }}>
-                {/* Solução para fuso horário: formatar a data como UTC para evitar deslocamento de dia */}
                 <td>{new Date(item.DataPrevisao).toLocaleDateString('pt-BR', {timeZone: 'UTC'})}</td> 
                 <td>{item.Cidade}</td>
                 <td>{item.TemperaturaMin}</td>
