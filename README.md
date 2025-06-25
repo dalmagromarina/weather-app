@@ -80,7 +80,7 @@ cd weather-app
 
 1. **Crie um Banco de Dados:** Abra o SSMS, conecte-se ao seu SQL Server e crie um novo banco de dados. Sugerimos o nome **db_previsao_clima.**
 
-**Crie as Tabelas:** Execute os scripts SQL, do arquivo [Scripts.sql]() no seu banco de dados db_previsao_clima.  
+**Crie as Tabelas:** Execute os scripts SQL, do arquivo [Scripts.sql](https://github.com/dalmagromarina/weather-app/blob/main/backend/script.sql) no seu banco de dados db_previsao_clima.  
 
 1. **Configurar Login no SQL Server:**
     - **Autenticação SQL Server (Usuário e Senha):** Se você pretende usar um login SQL Server (como sa), defina uma senha forte para ele e certifique-se de que o SQL Server está configurado para "Mixed Mode Authentication" (Modo de Autenticação SQL Server e Windows).
