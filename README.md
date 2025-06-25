@@ -2,6 +2,20 @@
 
 Este é um aplicativo web fullstack desenvolvido como exercício de avaliação para a TORFRESMA. Ele permite aos usuários buscar a previsão do tempo para cidades ou coordenadas geográficas, visualizar os dados em um relatório tabular e em gráficos interativos, com persistência dos dados em um banco de dados SQL Server.
 
+## Índice
+
+1.  [Funcionalidades](#funcionalidades)
+2.  [Como Executar o Projeto](#como-executar-o-projeto)
+    * [Pré-requisitos](#pré-requisitos)
+    * [1. Clonar o Repositório](#1-clonar-o-repositório)
+    * [2. Configurar o Banco de Dados (MSSQL)](#2-configurar-o-banco-de-dados-mssql)
+    * [3. Configurar Variáveis de Ambiente](#3-configurar-variáveis-de-ambiente)
+    * [4. Instalar Dependências](#4-instalar-dependências)
+    * [5. Iniciar os Servidores](#5-iniciar-os-servidores)
+3.  [Uso da Aplicação](#uso-da-aplicação)
+4.  [Qualidade do Código e Boas Práticas](#qualidade-do-código-e-boas-práticas)
+5.  [Contribuição (Opcional)](#contribuição-opcional)
+
 ## Funcionalidades
 
 * **Busca de Previsão:**
