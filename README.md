@@ -15,7 +15,6 @@ Este é um aplicativo web fullstack desenvolvido como exercício de avaliação 
     * [5. Iniciar os Servidores](#5-iniciar-os-servidores)
 4.  [Uso da Aplicação](#uso-da-aplicação)
 5.  [Qualidade do Código e Boas Práticas](#qualidade-do-código-e-boas-práticas)
-6.  [Contribuição (Opcional)](#contribuição-opcional)
 
 ### Tecnologias Utilizadas
 O projeto é dividido em duas partes principais: Frontend (cliente) e Backend (servidor), cada uma com suas próprias tecnologias.
@@ -175,6 +174,3 @@ Isso iniciará o aplicativo React e abrirá uma nova aba no seu navegador (geral
 - Queries SQL parametrizadas para evitar SQL Injection.
 - Mapeamento de pictogramas e tratamento de fusos horários no backend para dados consistentes.
 - Utilização de logs detalhados para facilitar a depuração.
-
-## **Contribuição (Opcional)**
-Se houver alguma sugestão ou melhoria, sinta-se à vontade para abrir uma _issue_ ou enviar um _pull request_.
