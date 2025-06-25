@@ -72,7 +72,7 @@ Certifique-se de ter o seguinte software instalado:
 Primeiro, clone este repositório para sua máquina local:
 
 ```bash
-git clone [URL_DO_SEU_REPOSITORIO_GITHUB]
+git clone https://github.com/dalmagromarina/weather-app.git
 cd weather-app
 ```
 ### **2\. Configurar o Banco de Dados (MSSQL)**
