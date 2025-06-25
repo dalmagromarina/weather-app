@@ -8,7 +8,8 @@ function WeatherChart({ data }) {
   }
 
   // Preparar os dados para os gráficos
-  const dates = data.map(item => new Date(item.DataPrevisao).toLocaleDateString('pt-BR'));
+  // MUDANÇA CRUCIAL AQUI: Formatar a data como UTC para evitar deslocamento de fuso horário
+  const dates = data.map(item => new Date(item.DataPrevisao).toLocaleDateString('pt-BR', {timeZone: 'UTC'}));
   const tempMin = data.map(item => item.TemperaturaMin);
   const tempMax = data.map(item => item.TemperaturaMax);
   const precipProbability = data.map(item => item.ProbabilidadePrecipitacao);
@@ -18,7 +19,7 @@ function WeatherChart({ data }) {
     chart: {
       id: 'temperature-chart',
       toolbar: {
-        show: false // Oculta a barra de ferramentas (zoom, pan, etc.)
+        show: false
       }
     },
     xaxis: {
@@ -32,16 +33,21 @@ function WeatherChart({ data }) {
         text: 'Temperatura (°C)'
       }
     },
-    colors: ['#008FFB', '#FF4560'], // Azul para mínima, Vermelho para máxima
+    colors: ['#008FFB', '#FF4560'],
     stroke: {
-      curve: 'smooth' // Linhas suaves
+      curve: 'smooth'
     },
     dataLabels: {
-      enabled: false // Não mostrar valores nos pontos
+      enabled: false
     },
     tooltip: {
       x: {
-        format: 'dd/MM/yyyy'
+        format: 'dd/MM/yyyy' // Formato do tooltip
+      },
+      y: { // Adicionado formatador para o tooltip de temperatura
+        formatter: function (val) {
+          return val.toFixed(2) + " °C";
+        }
       }
     },
     title: {
@@ -85,7 +91,7 @@ function WeatherChart({ data }) {
       min: 0,
       max: 100
     },
-    colors: ['#00E396'], // Verde para precipitação
+    colors: ['#00E396'],
     plotOptions: {
       bar: {
         horizontal: false,
@@ -103,7 +109,7 @@ function WeatherChart({ data }) {
         }
       },
       x: {
-        format: 'dd/MM/yyyy'
+        format: 'dd/MM/yyyy' // Formato do tooltip
       }
     },
     title: {

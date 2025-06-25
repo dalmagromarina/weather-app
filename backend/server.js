@@ -25,3 +25,14 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor backend rodando na porta ${PORT}`);
 });
+
+// Middleware para 404 (rota não encontrada)
+app.use((req, res, next) => {
+  res.status(404).json({ message: 'Recurso não encontrado. Verifique a URL e o método HTTP.' });
+});
+
+// Middleware de tratamento de erros global
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Erro interno do servidor. Por favor, tente novamente mais tarde.' });
+});

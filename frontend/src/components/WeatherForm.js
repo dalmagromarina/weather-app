@@ -1,6 +1,6 @@
 // frontend/src/components/WeatherForm.js
 import React, { useState } from 'react';
-import './WeatherForm.css'; // Importa o CSS específico para o relatório
+import './WeatherForm.css'; // Importa o CSS específico para o formulário
 
 function WeatherForm({ onSearch }) {
   const [city, setCity] = useState('');
@@ -60,28 +60,36 @@ function WeatherForm({ onSearch }) {
 
   return (
     <form onSubmit={handleSubmit} className="weather-form">
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '15px', marginBottom: '20px' }}>
+      {/* Container para Cidade/Latitude/Longitude */}
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: '15px',
+        marginBottom: '20px',
+        alignItems: 'center' // Adicionado para alinhar verticalmente os itens
+      }}>
         <input
           type="text"
           placeholder="Nome da Cidade"
           value={city}
           onChange={(e) => {
             setCity(e.target.value);
-            if (e.target.value.trim() !== '') { // Só limpa se houver algo digitado
+            if (e.target.value.trim() !== '') {
               setLatitude('');
               setLongitude('');
             }
           }}
           className="form-input"
         />
-        <span style={{ color: 'var(--torfresma-text-light)' }}>OU</span>
+        <span style={{ display: 'flex', color: 'var(--torfresma-text-light)' }}>OU</span>
         <input
           type="text"
           placeholder="Latitude"
           value={latitude}
           onChange={(e) => {
             setLatitude(e.target.value);
-            if (e.target.value.trim() !== '') { // Só limpa se houver algo digitado
+            if (e.target.value.trim() !== '') {
               setCity('');
             }
           }}
@@ -93,7 +101,7 @@ function WeatherForm({ onSearch }) {
           value={longitude}
           onChange={(e) => {
             setLongitude(e.target.value);
-            if (e.target.value.trim() !== '') { // Só limpa se houver algo digitado
+            if (e.target.value.trim() !== '') {
               setCity('');
             }
           }}
@@ -101,23 +109,38 @@ function WeatherForm({ onSearch }) {
         />
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '15px' }}>
-        <label style={{ color: 'var(--torfresma-text-light)' }}>Data Inicial:</label>
-        <input
-          type="date"
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-          className="form-input small-input"
-          style={{ width: '150px' }}
-        />
-        <label style={{ color: 'var(--torfresma-text-light)' }}>Data Final:</label>
-        <input
-          type="date"
-          value={endDate}
-          onChange={(e) => setEndDate(e.target.value)}
-          className="form-input small-input"
-          style={{ width: '150px' }}
-        />
+      {/* NOVO CONTAINER para Data Inicial/Final e o botão Buscar */}
+      <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          alignItems: 'center', // Já existente e correto para as datas
+          gap: '15px'
+      }}>
+        {/* Agrupar Label e Input para Data Inicial */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <label style={{ color: 'var(--torfresma-text-light)', whiteSpace: 'nowrap' }}>Data Inicial:</label>
+            <input
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              className="form-input small-input"
+              style={{ width: '150px' }}
+            />
+        </div>
+
+        {/* Agrupar Label e Input para Data Final */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <label style={{ color: 'var(--torfresma-text-light)', whiteSpace: 'nowrap' }}>Data Final:</label>
+            <input
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              className="form-input small-input"
+              style={{ width: '150px' }}
+            />
+        </div>
+
         <button type="submit" className="form-button">
           Buscar Previsão
         </button>

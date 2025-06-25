@@ -3,22 +3,20 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import WeatherForm from './components/WeatherForm';
 import WeatherReport from './components/WeatherReport';
-import WeatherChart from './components/WeatherChart'; // Importa o componente de gráficos
+import WeatherChart from './components/WeatherChart';
 import logoTorfresma from './assets/logo-torfresma.png';
 
 function App() {
   const [weatherData, setWeatherData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [currentSearchCity, setCurrentSearchCity] = useState(''); // Estado para armazenar a cidade atual da busca (para exibição)
+  const [currentSearchCity, setCurrentSearchCity] = useState('');
 
-  // Função para buscar dados da API do backend
   const fetchWeatherData = async (params = {}) => {
     setLoading(true);
     setError(null);
     try {
       const queryParams = new URLSearchParams(params).toString();
-      // Log para ver qual query string o frontend está enviando para o relatório
       console.log(`Buscando relatório com parâmetros (frontend): ${queryParams}`);
       const response = await fetch(`http://localhost:5000/api/weather/report?${queryParams}`);
       if (!response.ok) {
@@ -34,7 +32,6 @@ function App() {
     }
   };
 
-  // A função handleSearch
   const handleSearch = async (searchParams) => {
     setLoading(true);
     setError(null);
@@ -46,11 +43,10 @@ function App() {
         console.log('Filtrando histórico por datas apenas...');
         setCurrentSearchCity(`Período: ${searchParams.startDate} a ${searchParams.endDate}`);
         await fetchWeatherData({ startDate: searchParams.startDate, endDate: searchParams.endDate });
-        setLoading(false); // Já lidou com a busca
-        return; // Retorna para não continuar com a chamada POST
+        setLoading(false);
+        return;
     }
 
-    // Se há cidade ou coordenadas, faz a chamada POST para buscar nova previsão.
     try {
       const response = await fetch('http://localhost:5000/api/weather', {
         method: 'POST',
@@ -65,25 +61,30 @@ function App() {
         throw new Error(`HTTP error! status: ${response.status} - ${errorData.message || 'Erro desconhecido'} (Detalhes: ${JSON.stringify(errorData.details)})`);
       }
 
-      const responseData = await response.json(); // OBTENHA OS DADOS DA RESPOSTA AQUI
-      alert(responseData.message); // Usa a mensagem da resposta
+      const responseData = await response.json();
+      alert(responseData.message);
 
-      // Atualiza currentSearchCity com o nome oficial do backend ou o que for relevante
       let cityToFilter = '';
       if (responseData.city_name_official) {
-          setCurrentSearchCity(responseData.city_name_official); // Atualiza o estado para exibição
-          cityToFilter = responseData.city_name_official; // Usa para o filtro da requisição
-      } else if (searchParams.cidade) { // Fallback se o backend não retornar official_name (se não usou a API de localização)
-          setCurrentSearchCity(searchParams.cidade); // Atualiza o estado para exibição
-          cityToFilter = searchParams.cidade; // Usa para o filtro da requisição
+          setCurrentSearchCity(responseData.city_name_official);
+          cityToFilter = responseData.city_name_official;
       } else {
-          // Se a busca foi por lat/lon, o nome no DB será 'Coordenadas Fornecidas'
-          setCurrentSearchCity('Coordenadas Fornecidas');
-          cityToFilter = 'Coordenadas Fornecidas';
+          // Se não veio nome oficial, e veio lat/lon na busca, define um nome para o filtro
+          const latLonIdentifier = searchParams.latitude && searchParams.longitude 
+                                  ? `Lat: ${searchParams.latitude}, Lon: ${searchParams.longitude}` 
+                                  : 'Coordenadas Fornecidas';
+          setCurrentSearchCity(latLonIdentifier); // Exibe no título
+          cityToFilter = 'Coordenadas Fornecidas'; // O nome que será salvo no DB e usado para filtrar
       }
       
-      // Agora, chama fetchWeatherData com a cidade E/OU datas
-      await fetchWeatherData({ cidade: cityToFilter, startDate: searchParams.startDate, endDate: searchParams.endDate });
+      // Agora, chama fetchWeatherData com os parâmetros de filtro corretos
+      await fetchWeatherData({ 
+          cidade: cityToFilter, 
+          latitude: searchParams.latitude, // Passa lat/lon para o filtro de relatório
+          longitude: searchParams.longitude, // Passa lat/lon para o filtro de relatório
+          startDate: searchParams.startDate, 
+          endDate: searchParams.endDate 
+      });
 
     } catch (err) {
       setError('Falha ao buscar e salvar previsão: ' + err.message);
@@ -93,10 +94,8 @@ function App() {
     }
   };
 
-  // Carregar os dados iniciais do relatório ao montar o componente
   useEffect(() => {
-    // Você pode descomentar a linha abaixo se quiser que o relatório mostre todos os dados inicialmente.
-    // fetchWeatherData(); 
+    // fetchWeatherData();
   }, []);
 
   return (
@@ -110,11 +109,10 @@ function App() {
         {loading && <p>Carregando dados...</p>}
         {error && <p style={{ color: 'red' }}>Erro: {error}</p>}
         
-        {/* Renderiza o relatório e os gráficos se houver dados e não houver erro/loading */}
         {!loading && !error && weatherData.length > 0 && (
           <>
             <WeatherReport data={weatherData} currentCity={currentSearchCity} />
-            <WeatherChart data={weatherData} /> {/* NOVO COMPONENTE AQUI */}
+            <WeatherChart data={weatherData} />
           </>
         )}
         {!loading && !error && weatherData.length === 0 && (
