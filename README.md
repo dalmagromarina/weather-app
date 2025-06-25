@@ -47,7 +47,7 @@ Primeiro, clone este repositório para sua máquina local:
 
 ```bash
 git clone [URL_DO_SEU_REPOSITORIO_GITHUB]
-cd nome-do-seu-repositorio'''
+cd nome-do-seu-repositorio```
 
 ### 2. Configurar o Banco de Dados (MSSQL)
 Crie um Banco de Dados:
