@@ -20,19 +20,19 @@ Este é um aplicativo web fullstack desenvolvido como exercício de avaliação 
 O projeto é dividido em duas partes principais: Frontend (cliente) e Backend (servidor), cada uma com suas próprias tecnologias.
 
 **Frontend (React.js)**
-* React.js: Biblioteca JavaScript para construção da interface do usuário.
-* HTML/CSS: Estruturação e estilização dos componentes visuais.
-* Axios/Fetch API: Para fazer requisições HTTP ao backend.
-* Node.js (com npm/yarn): Ambiente de execução JavaScript para gerenciamento de dependências.
+* **React.js**: Biblioteca JavaScript para construção da interface do usuário.
+* **HTML/CSS**: Estruturação e estilização dos componentes visuais.
+* **Axios/Fetch API**: Para fazer requisições HTTP ao backend.
+* **Node.js** (com npm/yarn): Ambiente de execução JavaScript para gerenciamento de dependências.
 
 **Backend (Node.js com Express e SQL Server)**
-* Node.js: Ambiente de execução JavaScript.
-* Express.js: Framework web rápido e minimalista para Node.js, utilizado para construir a API RESTful.
-* SQL Server (MSSQL): Sistema de Gerenciamento de Banco de Dados Relacional para armazenamento das previsões.
-* ´´´mssql´´´ npm package: Driver para conectar Node.js ao SQL Server.
-* ´´´axios´´´ npm package: Cliente HTTP para fazer requisições à API externa da Meteoblue.
-* ´´´dotenv´´´ npm package: Para carregar variáveis de ambiente de um arquivo .env.
-* CORS ( ´´´cors´´´ npm package): Middleware para habilitar o Cross-Origin Resource Sharing.
+* **Node.js**: Ambiente de execução JavaScript.
+* **Express.js**: Framework web rápido e minimalista para Node.js, utilizado para construir a API RESTful.
+* **SQL Server (MSSQL)**: Sistema de Gerenciamento de Banco de Dados Relacional para armazenamento das previsões.
+* *mssql* npm package: Driver para conectar Node.js ao SQL Server.
+* *axios*  npm package: Cliente HTTP para fazer requisições à API externa da Meteoblue.
+* *dotenv*  npm package: Para carregar variáveis de ambiente de um arquivo .env.
+* CORS (*cors* npm package): Middleware para habilitar o Cross-Origin Resource Sharing.
 
 ## Funcionalidades
 
@@ -92,7 +92,6 @@ Na pasta backend, crie um arquivo chamado .env (se já não existir) e preencha-
 Snippet de código
 ```
 # Configurações do Servidor
-
 PORT=5000
 ```
 \# Opção 1: Autenticação SQL Server
@@ -114,7 +113,6 @@ DB_TRUST_SERVER_CERTIFICATE=true
 TRUSTED_CONNECTION=true # Adicione esta linha no .env para Autenticação Windows (e remova user/password do db.js)
 
 # Chave da API da Meteoblue
-
 METEOBLUE_API_KEY=SuaChaveDaAPIMeteoblueAqui
 ```
 1. Substitua **SuaSenhaSeguraAqui** e **SuaChaveDaAPIMeteoblueAqui** pelos seus valores reais.
